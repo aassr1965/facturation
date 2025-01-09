@@ -11,17 +11,16 @@ const VATControl = ({ invoice, setIvoice }: VATControlProps) => {
     setIvoice({
       ...invoice,
       vatActive: e.target.checked,
-      vatRate: e.target.checked ? 18 : 0,
+      vatRate: e.target.checked ? 19 : 0,
     });
   };
-  
+
   const handleVatRateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIvoice({
       ...invoice,
       vatRate: parseFloat(e.target.value),
     });
   };
-
 
   return (
     <div className="flex items-center rounded-xl">

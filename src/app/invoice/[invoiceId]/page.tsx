@@ -2,6 +2,7 @@
 import { deleteInvoice, getInvoiceById, updateInvoice } from "@/app/actions";
 import InvoiceInfo from "@/components/InvoiceInfo";
 import InvoiceLines from "@/components/InvoiceLines";
+import InvoicePdf from "@/components/InvoicePdf";
 import VATControl from "@/components/VATControl";
 import Wrapper from "@/components/Wrapper";
 import { Invoice, Totals } from "@/types";
@@ -61,8 +62,10 @@ const Page = ({ params }: { params: Promise<{ invoiceId: string }> }) => {
       }
     }
   };
+  
   useEffect(() => {
     fetchInvoice();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -179,6 +182,7 @@ const Page = ({ params }: { params: Promise<{ invoiceId: string }> }) => {
         </div>
         <div className="flex w-full md:w-2/3 flex-col">
           <InvoiceLines invoice={invoice} setInvoice={setInvoice} />
+          <InvoicePdf invoice={invoice} totals={totals}/>
         </div>
       </div>
     </Wrapper>
